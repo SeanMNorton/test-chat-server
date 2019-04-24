@@ -2,10 +2,13 @@ var express = require("express");
 var port = process.env.PORT || 3000;
 var app = express();
 
+app.use(express.static(__dirname + '/public'));
+
 app.get("/", function (req, res) {
-    response.writeHead(200, {"Content-Type": "text/html"});
-    response.write("<h1>Hello World</h1>");
-    response.end();
+    res.send(JSON.stringify({ Hello: 'World'}));
+    res.writeHead(200, {"Content-Type": "text/html"});
+    res.write("<h1>Hello World</h1>");
+    res.end();
 });
 
 app.listen(port, function () {
