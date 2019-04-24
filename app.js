@@ -1,10 +1,10 @@
-var express = require('express');
+var express = require("express");
 var port = process.env.PORT || 3000;
 var app = express();
 
-app.get('/', function (req, res) {
-    response.writeHead(200, {'Content-Type': 'text/html'});
-    response.write('<h1>Hello World</h1>');
+app.get("/", function (req, res) {
+    response.writeHead(200, {"Content-Type": "text/html"});
+    response.write("<h1>Hello World</h1>");
     response.end();
 });
 
