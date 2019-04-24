@@ -1,21 +1,32 @@
-const express = require('express');
-const app = express();
+var express = require('express');
 var port = process.env.PORT || 3000;
+var app = express();
 
-server = app.listen(port, function(){
-    console.log(`server is running on port ${port}`)
+app.get('/', function (req, res) {
+ res.send(JSON.stringify({ Hello: 'World'}));
 });
 
-server.get('/', function (req, res) {
-    res.send(JSON.stringify({ Hello: 'World'}));
+app.listen(port, function () {
+ console.log(`Example app listening on port !`);
 });
-   
 
-const io = require('socket.io')(server);
-io.on('connection', function(socket) {
-    console.log(socket.id)
+// const express = require('express');
+// const app = express();
+// var port = process.env.PORT || 3000;
+
+// server = app.listen(port, function(){
+//     console.log(`server is running on port ${port}`)
+// });
+
+// server.get('/', function (req, res) {
+//     res.send(JSON.stringify({ Hello: 'World'}));
+// });
+
+// const io = require('socket.io')(server);
+// io.on('connection', function(socket) {
+//     console.log(socket.id)
     
-    socket.on('SEND_MESSAGE', function(data) {
-        io.emit('MESSAGE', data)
-    }); 
-});
+//     socket.on('SEND_MESSAGE', function(data) {
+//         io.emit('MESSAGE', data)
+//     }); 
+// });
