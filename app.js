@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
+var port = process.env.PORT || 3000;
 
-server = app.listen(3001, function(){
-    console.log('server is running on port 3001')
+server = app.listen(port, function(){
+    console.log(`server is running on port ${port}`)
 });
 
 server.get('/', function (req, res) {
