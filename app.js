@@ -6,7 +6,7 @@ server = app.listen(port, function(){
     console.log(`server is running on port ${port}`)
 });
 
-server.get('/', function (req, res) {
+app.get('/', function (req, res) {
     res.send(JSON.stringify({ Hello: 'World'}));
 });
 
