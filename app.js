@@ -7,14 +7,18 @@ server = app.listen(port, function(){
 });
 
 app.get('/', function (req, res) {
-    res.send(JSON.stringify({ Hello: 'World'}));
+    res.send('<h1>Socket.io Chat Server</h1>');
 });
 
+// sockets
 const io = require('socket.io')(server);
+let messages = [];
+
 io.on('connection', function(socket) {
-    console.log(socket.id)
-    
+    io.emit('ALL_MESSAGES', messages);
+
     socket.on('SEND_MESSAGE', function(data) {
+        messages = [data, ...messages];
         io.emit('MESSAGE', data)
     }); 
 });
