@@ -15,10 +15,19 @@ const io = require('socket.io')(server);
 let messages = [];
 
 io.on('connection', function(socket) {
-    io.emit('ALL_MESSAGES', messages);
+    io.emit('ALL_MESSAGES', messages)
 
     socket.on('SEND_MESSAGE', function(data) {
         messages = [data, ...messages];
         io.emit('MESSAGE', data)
     }); 
+
+    socket.on('DELETE_MESSAGES', function() {
+        messages = [];
+        io.emit('ALL_MESSAGES', messages);
+    });
+
+    socket.on('ALERT', function(data) {
+        io.emit('ALERT', data.text)
+    });
 });
